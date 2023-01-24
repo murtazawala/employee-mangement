@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { AbstractDocument } from 'src/common/repository/abstract.schema';
+import { AbstractDocument } from '../../common/repository/abstract.schema';
 
 @Schema({ versionKey: false })
 export class Employee extends AbstractDocument {

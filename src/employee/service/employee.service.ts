@@ -1,11 +1,11 @@
+import { IEmployeeRepository } from '../../common/repository/abstract.employee.repository';
 import { CreateEmployeeDto } from './../dto/employee.dto';
 import { Types } from 'mongoose';
-import { EmployeeRepository } from '../repository/employee.repository';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class EmployeeService {
-  constructor(private readonly employeeRepository: EmployeeRepository) {}
+  constructor(private readonly employeeRepository: IEmployeeRepository) {}
 
   public async getEmployees() {
     return await this.employeeRepository.find({});

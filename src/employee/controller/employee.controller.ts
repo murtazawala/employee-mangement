@@ -6,62 +6,40 @@ import {
   Controller,
   Delete,
   Get,
-  HttpStatus,
   Param,
   Post,
   Put,
-  Req,
-  Res,
 } from '@nestjs/common';
-import { Response, Request } from 'express';
 
 @Controller('employee')
 export class EmployeeController {
   constructor(private readonly employeeService: EmployeeService) {}
 
   @Get()
-  async getEmployees(@Res() res: Response) {
-    const result = await this.employeeService.getEmployees();
-    res.status(HttpStatus.OK).json({ data: result });
+  async getEmployees() {
+    return await this.employeeService.getEmployees();
   }
 
   @Get('/:employeeId')
-  async getEmployee(
-    @Res() res: Response,
-    @Param('employeeid') id: Types.ObjectId,
-  ) {
-    const result = await this.employeeService.getEmployee(id);
-    res.status(HttpStatus.OK).json({ data: result });
+  async getEmployee(@Param('employeeid') id: Types.ObjectId) {
+    return await this.employeeService.getEmployee(id);
   }
 
   @Post()
-  async addEmployee(@Res() res: Response, @Body() employee: CreateEmployeeDto) {
-    const result = await this.employeeService.addEmployee(employee);
-    res
-      .status(HttpStatus.OK)
-      .json({ message: 'Employee Created Successfully!!!', data: result });
+  async addEmployee(@Body() employee: CreateEmployeeDto) {
+    return await this.employeeService.addEmployee(employee);
   }
 
   @Delete('/:employeeId')
-  async deleteEmployee(
-    @Res() res: Response,
-    @Param('employeeid') id: Types.ObjectId,
-  ) {
-    const result = await this.employeeService.deleteEmployee(id);
-    res
-      .status(HttpStatus.OK)
-      .json({ message: 'Employee deleted succesfully......', data: result });
+  async deleteEmployee(@Param('employeeid') id: Types.ObjectId) {
+    return await this.employeeService.deleteEmployee(id);
   }
 
   @Put('/:employeeid')
   async updateEmployee(
-    @Res() res: Response,
     @Param('employeeid') id: Types.ObjectId,
-    @Req() req: Request,
+    @Body() body: CreateEmployeeDto,
   ) {
-    const data = await this.employeeService.updateEmployee(id, req.body);
-    res
-      .status(HttpStatus.OK)
-      .json({ message: 'Employee updated successfully....', data });
+    return await this.employeeService.updateEmployee(id, body);
   }
 }
