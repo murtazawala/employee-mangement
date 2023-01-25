@@ -1,6 +1,6 @@
 import { IEmployeeRepository } from 'src/common/repository/abstract.employee.repository';
 import { Employee } from 'src/employee/schema/employee.schema';
-import { NotFoundException, NotImplementedException } from '@nestjs/common';
+import { NotFoundException } from '@nestjs/common';
 import { FilterQuery, Types } from 'mongoose';
 
 export class MockEmployeeRepository implements IEmployeeRepository {

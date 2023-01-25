@@ -1,4 +1,4 @@
-import { IEmployeeRepository } from 'src/common/repository/abstract.employee.repository';
+import { IEmployeeRepository } from '../common/repository/abstract.employee.repository';
 import { EmployeeRepository } from './repository/employee.repository';
 import { EmployeeService } from './service/employee.service';
 import { EmployeeController } from './controller/employee.controller';

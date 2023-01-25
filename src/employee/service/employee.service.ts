@@ -13,8 +13,6 @@ export class EmployeeService {
 
   public async getEmployee(id: Types.ObjectId) {
     const res = await this.employeeRepository.findOne(id);
-    console.log(res);
-
     return res;
   }
 
